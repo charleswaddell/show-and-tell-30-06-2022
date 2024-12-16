@@ -15,3 +15,7 @@ If you squint you can see how the TypeScript type system looks an awful lot like
 | Equality              | `a === b`                           | `A extends B`                  |
 | Conditional Branching | `a === b ? a : b`                   | `A extends B ? A : B`          |
 | Recursion             | `const func = (a, b) => func(a, b)` | `type Func<A, B> = Func<B, A>` |
+
+## Tuple Revision - December 16th, 2024
+
+After reading the [forth chapter](https://type-level-typescript.com/arrays-and-tuples) of the `<Type>Level TypeScript Course` I discoverd that you can use the `['length']` property of tuples to do arithmetic. The big advantage being that we can now use a much larger number space. Before we had to define each number and their immediate neighbours on the number line. Now we keep track of values using tuples. We spread the tuples together to add two values and remove the head value to subtract. I also updated all the recursive types to allow for [tail-recursion elimination](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5/#tailrec-conditional) by TypeScript.

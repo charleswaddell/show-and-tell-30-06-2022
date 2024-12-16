@@ -1,7 +1,8 @@
 import { Add } from './Add';
 import { SubtractOne } from './SubtractOne';
-import { Zero } from './Number';
 
-export type Multiply<Num1, Num2> = Num2 extends Zero
-  ? Zero
-  : Add<Num1, Multiply<Num1, SubtractOne<Num2>>>;
+export type Multiply<
+  Num1 extends number,
+  Num2 extends number,
+  Acc extends number = 0
+> = Num2 extends 0 ? Acc : Multiply<Num1, SubtractOne<Num2>, Add<Num1, Acc>>;
